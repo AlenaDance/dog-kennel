@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/stylesheets/registerStyle.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class = "container">
+        <form action="" method="post" id="registrationForm">
+            <h1 class = "title">Registration Form</h1>
+            <label for="login"><i class="fa-solid fa-user"></i>  Логин:</label>
+            <input name="login" type="login">
+            <label for="name"><i class="fa-solid fa-user"></i>  Имя и фамилия:</label>
+            <input name="name" type="text">
+            <label for="password"><i class="fa-solid fa-lock"></i>  Пароль:</label>
+            <input name="password" type="password">
+            <label for="confirmPassword"><i class="fa-sharp fa-solid fa-circle-check"></i>  Подтвердить пароль:</label>
+            <input name="confirmPassword" type="password">
+            <input name="register" type="submit" value="Зарегистрироваться" class = "grnBtn">
+        </form>
+        <button onclick = "backToLogin()"class="grnBtn">Логин</button>
+        <button onclick ="toIndex()" class="grnBtn">На главную</button>
+    </div>
+    <script>
+        function backToLogin() {
+            window.location.href = '/login';
+        }
+        function toIndex(){
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

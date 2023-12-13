@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel = "stylesheet" href="/static/stylesheets/loginStyle.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Login</h1>
+        <form action="" method="post">         
+            <label for="login"><i class="fa-solid fa-user"></i>  Логин:</label>
+            <input name="login" type="login" id="login">
+            <label for="password"><i class="fa-solid fa-lock"></i>  Пароль:</label>
+            <input name="password" type="password" id="password">
+            <input name="signin" type="submit" value="Логин" class = "grnBtn">
+        </form> 
+        <button onclick ="toRegistration()" class="grnBtn">Зарегистрироваться</button>
+        <button onclick ="toIndex()" class="grnBtn">На главную</button>
+    </div>
+    <script>
+        function toRegistration() {
+            window.location.href = '/register';
+        }
+        function toIndex(){
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

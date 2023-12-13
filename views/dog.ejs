@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= dog.name %></title>
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/dogStyle.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div class="container">
+                <h1>Dogs</h1>
+            </div>
+        </header>
+        <section class="section">
+            <div class="block">
+                <img id="image" src="/static/<%= dog.image_path %>" alt="<%= dog.name %>">
+            </div>
+            <div class="details">
+                <h2><%= dog.name %></h2>
+                <ul>
+                    <li><span class="label">Возраст:</span> <%= dog.age %></li>
+                    <li><span class="label">Порода:</span> <%= dog.breed %></li>
+                    <li><span class="label">Цвет:</span> <%= dog.color %></li>
+                    <li><span class="label">Тип шерсти:</span> <%= dog.coat_type %></li>
+                    <li><span class="label">Пол:</span> <%= dog.gender %></li>
+                    <li><span class="label">Владелец:</span> <%= dog.owner %></li>
+                </ul>
+                <% if (isAdmin) { %>
+                <div class="buttons">
+                    <button onclick="openUpdateForm('<%= dog.animal_id %>')">Update</button>
+                    <button onclick="deleteDog('<%= dog.animal_id %>','<%= isAdmin %>', '<%= login %>')">Delete</button>
+                <% }
+                 else{
+                    if(login !== ''){ %>
+                    <button onclick="buyDog('<%= dog.animal_id %>', '<%= login %>')">buy</button>
+                </div>
+                    <%}
+                }%>
+            </div>
+        </section>
+        <div class="overlay" id ='overlayUpdateForm'>
+        <div id="updateDogModal" class="modal">
+            <span class="close" onclick="closeUpdateForm()">&times;</span>
+            <form id="updateDogForm" onsubmit="submitUpdateForm(event, '<%= dog.animal_id %>')">
+                <label for="name">Имя:</label>
+                <input type="text" id="updateName" name="name" required>
+                <label for="age">Возраст:</label>
+                <input type="text" id="updateAge" name="age" required>
+                <label for="breed">Порода:</label>
+                <input type="text" id="updateBreed" name="breed" required>
+                <label for="color">Цвет:</label>
+                <input type="text" id="updateColor" name="color" required>
+                <label for="coat_type">Тип шерсти:</label>
+                <input type="text" id="UpdateCoat_type" name="coat_type">
+                <label for="gender">Пол:</label>
+                <input type="text" id="updateGender" name="gender" required>
+                <label for="owner">Владелец:</label>
+                <input type="text" id="updateOwner" name="owner">
+
+                <input type="submit" value="Update Dog">
+            </form>
+        </div>
+    </div>
+    </main>
+</body>
+<script src="../static/scripts/dogScript.js"></script>
+</html>

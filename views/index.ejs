@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>do you like dogs?</title>
+    <link rel="stylesheet" type="text/css" href="../static/stylesheets/mainStyle.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div class="container">
+                <h1>Dogs</h1>
+                <nav>
+                    <ul>
+                        <% if(login !== ""){ %>
+                            <p class ="yourLogin"><%= login %></p>
+                          <%}%>
+                      <li><a href="/login">Login</a></li>
+                      <li><a href="/register">Register</a></li>
+                    </ul>
+                  </nav>
+                  
+            </div>
+        </header>
+        
+        <div id="addAnimalFormOverlay" class="overlay">
+            <div class="form-container">
+                <span class="close" onclick="closeAddAnimalForm()">&times;</span>
+                <form id="addAnimalForm" onsubmit="submitAddAnimalForm(event)">
+                    <div class = "form">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class = "form">
+                        <label for="age">Возраст:</label>
+                        <input type="text" id="age" name="age" required>
+                    </div>
+                    <div class = "form">
+                        <label for="breed">Порода:</label>
+                        <input type="text" id="breed" name="breed" required>
+                    </div>
+                    <div class = "form">
+                        <label for="color">Цвет шерсти:</label>
+                        <input type="text" id="color" name="color" required>
+                    </div>
+                    <div class = "form">
+                        <label for="coat_type">Тип шерсти:</label>
+                        <input type="text" id="coat_type" name="coat_type" required>
+                    </div>
+                    <div class = "form">
+                        <label for="gender">Пол:</label>
+                        <input type="text" id="gender" name="gender" required>
+                    </div>
+                    <div class="form">
+                        <label for="image">Изображение:</label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                    </div>
+                    <input type="submit" value="Добавить собаку">
+                </form>
+            </div>
+        </div>
+        <% if (isAdmin) { %>
+            <div class="addAnimalButton">
+                <button id="addAnimalButton" onclick="openAddAnimalForm()">Добавить новую собаку</button>
+            </div>
+        <% }%>
+        <section class="section">
+            <% animals.forEach(animal => { %>
+                <div class="block" onclick="viewDog('<%= animal.animal_id %>','<%= isAdmin %>','<%= login %>')">
+                    <img src="../static/<%= animal.image_path %>" alt="<%= animal.name %>" class="img_dog">
+                    <div class="text"><%= animal.name %></div>
+                </div>
+            <% }); %>
+        </section>
+        
+    </main>
+</body>
+<script src="../static/scripts/mainScript.js"></script>
+</html>
